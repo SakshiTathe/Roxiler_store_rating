@@ -6,7 +6,7 @@ const mysqlPool = require("../config/db.js");
 const adduserController = async (req, res) => {
     try {
         const { name, email, password, address,role } = req.body;
-        //validations
+      
         if (!ValidateName(name))
             return responseHandler.error(
                 res, "Name must be between 20 and 60 characters", 400);
@@ -41,13 +41,13 @@ const adduserController = async (req, res) => {
 const addstoreController = async (req, res) => {
     try {
         const { store_name, store_address, owner_id} = req.body;
-        //validations
+     
         if (!ValidateName(store_name))
             return responseHandler.error(
                 res, "Name must be between 20 and 60 characters", 400);
         if (!ValidateAddress(store_address))
             return responseHandler.error(res, "Invalid address", 400);
-        //check user
+     
         const sql = "INSERT INTO stores (store_name,address,owner_id) VALUES(?,?,?)";
         const values = [store_name, store_address, owner_id];
         try {
