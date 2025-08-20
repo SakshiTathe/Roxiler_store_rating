@@ -8,7 +8,7 @@ const JWT = require("jsonwebtoken");
 const registerController = async (req, res) => {
     try {
         const { name, email, password, address } = req.body;
-        //validations
+    
         if (!ValidateName(name))
             return responseHandler.error(
                 res, "Name must be between 20 and 60 characters", 400);
@@ -20,7 +20,7 @@ const registerController = async (req, res) => {
 
         if (!ValidateAddress(address))
             return responseHandler.error(res, "Invalid address", 400);
-        //check user
+    
         const sql = "INSERT INTO user (name, email, password, address,role) VALUES(?,?,?,?,?)";
         const values = [name, email, password, address, "normal_user"];
         try {
@@ -39,7 +39,7 @@ const registerController = async (req, res) => {
         responseHandler.error(res, "Error in registration", error, 500);
     }
 };
-//POST LOGIN
+
 const loginController = async (req, res) => {
     console.log("check")
     const { email, password } = req.body;
