@@ -70,10 +70,10 @@ npm install
 ```
 ### To Create automatically tables in database using code Run given code in backend server.js by changing table nmme from models folder
 ```bash
-/* const UsersTab = require("./models/ratingModel");
+const UsersTab = require("./models/ratingModel");
 (async () => {
     await UsersTab();
-})();  */ 
+})();  
 ```
 ### Root folder
 ```bash
