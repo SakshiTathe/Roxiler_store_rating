@@ -31,7 +31,6 @@ export const Admin_Dashboard = () => {
         const res3 = await axios.get("/api/v1/user/dashboard/admin_users");
         const res4 = await axios.get("/api/v1/user/dashboard/store_users");
         const res5 = await axios.get("/api/v1/user/dashboard/stores");
-        console.log(res2.data.data)
         if (res && res.data.success) {
           setInfo(res.data.data)
           setUsers(res2.data.data)
@@ -82,7 +81,11 @@ export const Admin_Dashboard = () => {
           {titles.map((title, i) => (
             <div key={i} className="mb-4">
               <h5 className="mb-2 d-flex justify-content-center">{title}</h5>
-              <Table data={contents[i]} />
+              {contents[i] && contents[i].length > 0 ? (
+                  <Table data={contents[i]} />
+              ) : (
+                  <p className="text-center text-muted">No records found</p>
+              )}
             </div>
           ))}
         </div>
