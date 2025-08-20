@@ -53,6 +53,7 @@ A full-stack web application that allows users to **rate stores** (1–5 stars),
 https://github.com/SakshiTathe/Roxiler_store_rating.git
 cd path of project root folder
 ```
+### Start database connection first. create .env file in backend to store credentials 
 
 ### Backend Setup
 
@@ -67,10 +68,18 @@ npm install
 cd frontend
 npm install
 ```
+### To Create automatically tables in database using code Run given code in backend server.js by changing table nmme from models folder
+```bash
+/* const UsersTab = require("./models/ratingModel");
+(async () => {
+    await UsersTab();
+})();  */ 
+```
 ### Root folder
 ```bash
 npm start //this will start both frontend and backend concurrently 
 ```
+
 ---
 
 
