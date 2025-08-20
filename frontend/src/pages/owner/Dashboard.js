@@ -66,11 +66,14 @@ export const Owner_Dashboard = () => {
                 {stores.map(store => (
                     <div key={store.store_id} style={{ marginBottom: "2rem" }}>
                         <h3 className="mb-2 d-flex justify-content-center">{store.store_name} - {store.address}</h3>
-                        <Table data={storeData[store.store_id] || []} />
+                        {storeData[store.store_id] && storeData[store.store_id].length > 0 ? (
+                            <Table data={storeData[store.store_id]} />
+                        ) : (
+                            <p className="text-center text-muted">No records found</p>
+                          )}
                     </div>
                 ))}
             </div>
-
         </div>
     )
 }
