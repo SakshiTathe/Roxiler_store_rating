@@ -32,7 +32,7 @@ const userController = async (req, res) => {
 const ownergetController = async (req, res) => {
     try {
         console.log("Query executed1");
-        const sql = "SELECT * FROM user WHERE role= ?";
+        const sql = "SELECT user_id,name FROM user WHERE role= ?";
         const [storeOwners] = await mysqlPool.query(sql, ['store_owner']);
         console.log(storeOwners)
         responseHandler.success(res, "Store names fetched", storeOwners);
