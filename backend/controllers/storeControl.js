@@ -20,11 +20,19 @@ const ownerstorController = async (req, res) => {
                     JOIN user u ON r.user_id=u.user_id
                     WHERE r.store_id = ?;
             `;
+        const sql2 = `SELECT AVG(r.rating_value) AS average_rate
+                    FROM rating r
+                    JOIN user u ON r.user_id=u.user_id
+                    WHERE r.store_id = ?`;
         const [rows] = await mysqlPool.query(sql, [storeID]);
+        const [averages] = await mysqlPool.query(sql2, [storeID]);
         if (rows.length === 0) {
-            return responseHandler.success(res, "No ratings found for this store owner", []);
+            return responseHandler.success(res, "No ratings found for this store owner", {
+                rows: [],
+                average: averages[0]?.average_rate || null
+            });
         }
-        return responseHandler.success(res, "Ratings fetched successfully", rows);
+        return responseHandler.success(res, "Ratings fetched successfully", {rows,average:averages[0]?.average_rate || null });
     } catch (error) {
         responseHandler.error(res, "Error fetching ratings", error, 500);
     }
