@@ -38,8 +38,6 @@ export const Admin_Dashboard = () => {
           setAdmin(res3.data.data)
           setStoreUser(res4.data.data)
           setStores(res5.data.data)
-          console.log("this", users[0]["email"])
-          console.log("this", typeof users)
         } else {
           toast.error(res.data.message);
         }
