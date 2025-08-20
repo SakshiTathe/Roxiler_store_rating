@@ -30,7 +30,6 @@ const AddStore = () => {
     const handleCancel = () => {
         navigate("/AdminRoute/admin");
     };
-    // form function
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -57,7 +56,7 @@ const AddStore = () => {
                 const res = await axios.get("/api/v1/user/getowners");
                 if (res && res.data.success) {
                     sessionStorage.setItem("owners", JSON.stringify(res.data.data));
-                    setOwners(res.data.data); // array of owners from API
+                    setOwners(res.data.data); 
                 } else {
                     toast.error(res.data.message);
                 }
