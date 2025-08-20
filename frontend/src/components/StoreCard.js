@@ -95,12 +95,14 @@ export const StoreCard = ({ shops, userId }) => {
                                 <div className="card-body">
                                     <h4 className="card-title">{keys.store_name}</h4>
                                     <ul className="list-group list-group-flush mb-3">
-                                        <li className="list-group-item"><strong>{keys.address}</strong> 123 Main Street, Pune</li>
+                                        <li className="list-group-item"><strong>{keys.address}</strong></li>
                                         <li className="list-group-item">
-                                            <strong>Overall Rating:</strong>{keys.overall_rating ?? "0"} ⭐⭐⭐⭐☆
+                                            <strong>Overall Rating:</strong> <strong>{keys.overall_rating ?? "0"}</strong> 
                                         </li>
                                         <li className="list-group-item">
-                                            <strong>My Rating:</strong>{keys.my_rating ?? "Not rated"} ⭐⭐⭐☆☆
+                                            <strong >My Rating:</strong>{keys.my_rating ?? "Not rated"} ⭐
+                                            <br/>
+                                            <strong className="list-group-item my-2">
                                             <RatingStars initialRate={keys.my_rating || 0}
                                                 onRate={(value) => {
                                                     setRate(value);
@@ -108,9 +110,10 @@ export const StoreCard = ({ shops, userId }) => {
                                                     setUserId(auth.user.id);
                                                 }}
                                             />
+                                            </strong>
                                         </li>
+                                        <li className="list-group-item fs-1" style={{fontSize:"1rem"}}>{keys.my_rating}</li>
                                     </ul>
-                                    <p>{keys.my_rating}</p>
                                     {keys.my_rating ? (
                                         <button
                                             className="btn btn-warning btn-sm"
