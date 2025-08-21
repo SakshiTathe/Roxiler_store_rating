@@ -1,7 +1,7 @@
 module.exports = {
     ValidateName:(name)=>{
         if (!name) return false;
-        return name.length >= 3 && name.length <= 60;
+        return name.length >= 20 && name.length <= 60;
     },
     ValidateEmail: (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
     ValidatePassword: (password)=>{
